@@ -1,7 +1,7 @@
 # Leal TypeScript Library
 
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Flealhq%2Fleal-typescript-sdk)
-[![npm shield](https://img.shields.io/npm/v/)](https://www.npmjs.com/package/)
+[![npm shield](https://img.shields.io/npm/v/@lealhq/leal)](https://www.npmjs.com/package/@lealhq/leal)
 
 Digital loyalty stamp cards in Apple Wallet and Google Wallet, for local
 businesses. This library covers the whole [Leal](https://www.getleal.com)
@@ -43,7 +43,7 @@ API reference documentation is available [here](https://app.getleal.com/docs/api
 ## Installation
 
 ```sh
-npm i -s 
+npm i -s @lealhq/leal
 ```
 
 ## Reference
@@ -55,7 +55,7 @@ A full reference for this library is available [here](https://github.com/lealhq/
 Instantiate and use the client with the following:
 
 ```typescript
-import { LealClient } from "";
+import { LealClient } from "@lealhq/leal";
 
 const client = new LealClient({ token: "YOUR_TOKEN" });
 await client.customerCards.stamp({
@@ -71,7 +71,7 @@ await client.customerCards.stamp({
 This SDK allows you to configure different environments for API requests.
 
 ```typescript
-import { LealClient, LealEnvironment } from "Leal";
+import { LealClient, LealEnvironment } from "@lealhq/leal";
 
 const client = new LealClient({
     environment: LealEnvironment.Production,
@@ -84,7 +84,7 @@ The SDK exports all request and response types as TypeScript interfaces. Simply 
 following namespace:
 
 ```typescript
-import { Leal } from "Leal";
+import { Leal } from "@lealhq/leal";
 
 const request: Leal.GetStoresRequest = {
     ...
@@ -97,7 +97,7 @@ When the API returns a non-success status code (4xx or 5xx response), a subclass
 will be thrown.
 
 ```typescript
-import { LealError } from "Leal";
+import { LealError } from "@lealhq/leal";
 
 try {
     await client.customerCards.stamp(...);
@@ -118,7 +118,7 @@ try {
 This SDK supports direct imports of subpackage clients, which allows JavaScript bundlers to tree-shake and include only the imported subpackage code. This results in much smaller bundle sizes.
 
 ```typescript
-import { StoresClient } from 'Leal/stores';
+import { StoresClient } from '@lealhq/leal/stores';
 
 const client = new StoresClient({...});
 ```
@@ -128,7 +128,7 @@ const client = new StoresClient({...});
 If you would like to send additional headers as part of the request, use the `headers` request option.
 
 ```typescript
-import { LealClient } from "Leal";
+import { LealClient } from "@lealhq/leal";
 
 const client = new LealClient({
     ...
@@ -223,7 +223,7 @@ console.log(rawResponse.headers['X-My-Header']);
 The SDK supports logging. You can configure the logger by passing in a `logging` object to the client options.
 
 ```typescript
-import { LealClient, logging } from "Leal";
+import { LealClient, logging } from "@lealhq/leal";
 
 const client = new LealClient({
     ...
@@ -307,7 +307,7 @@ The SDK provides a way for you to customize the underlying HTTP client / Fetch f
 unsupported environment, this provides a way for you to break glass and ensure the SDK works.
 
 ```typescript
-import { LealClient } from "Leal";
+import { LealClient } from "@lealhq/leal";
 
 const client = new LealClient({
     ...
