@@ -3,10 +3,19 @@
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Flealhq%2Fleal-typescript-sdk)
 [![npm shield](https://img.shields.io/npm/v/)](https://www.npmjs.com/package/)
 
-The Leal TypeScript library provides convenient access to the Leal APIs from TypeScript.
+Digital loyalty stamp cards in Apple Wallet and Google Wallet, for local
+businesses. This library covers the whole [Leal](https://www.getleal.com)
+API, so you can enrol customers, add stamps, redeem rewards and read a
+card's wallet links from your own application.
+
+- Guides and a page for every language: [www.getleal.com/developers](https://www.getleal.com/developers)
+- Create an API token: [app.getleal.com/api_tokens](https://app.getleal.com/api_tokens)
+- The OpenAPI description these libraries are built from: [www.getleal.com/openapi.json](https://www.getleal.com/openapi.json)
+
 
 ## Table of Contents
 
+- [Documentation](#documentation)
 - [Installation](#installation)
 - [Reference](#reference)
 - [Usage](#usage)
@@ -27,6 +36,10 @@ The Leal TypeScript library provides convenient access to the Leal APIs from Typ
   - [Runtime Compatibility](#runtime-compatibility)
 - [Contributing](#contributing)
 
+## Documentation
+
+API reference documentation is available [here](https://app.getleal.com/docs/api.html).
+
 ## Installation
 
 ```sh
@@ -45,11 +58,11 @@ Instantiate and use the client with the following:
 import { LealClient } from "";
 
 const client = new LealClient({ token: "YOUR_TOKEN" });
-await client.cards.create({
+await client.customerCards.stamp({
     account_id: 1,
-    card: {
-        name: "name"
-    }
+    customer_id: 1,
+    id: 1,
+    stamps: 1
 });
 ```
 
@@ -87,7 +100,7 @@ will be thrown.
 import { LealError } from "Leal";
 
 try {
-    await client.cards.create(...);
+    await client.customerCards.stamp(...);
 } catch (err) {
     if (err instanceof LealError) {
         console.log(err.statusCode);
@@ -124,7 +137,7 @@ const client = new LealClient({
     }
 });
 
-const response = await client.cards.create(..., {
+const response = await client.customerCards.stamp(..., {
     headers: {
         'X-Custom-Header': 'custom value'
     }
@@ -136,7 +149,7 @@ const response = await client.cards.create(..., {
 If you would like to send additional query string parameters as part of the request, use the `queryParams` request option.
 
 ```typescript
-const response = await client.cards.create(..., {
+const response = await client.customerCards.stamp(..., {
     queryParams: {
         'customQueryParamKey': 'custom query param value'
     }
@@ -166,7 +179,7 @@ Which status codes are retried depends on the `retryStatusCodes` generator confi
 Use the `maxRetries` request option to configure this behavior.
 
 ```typescript
-const response = await client.cards.create(..., {
+const response = await client.customerCards.stamp(..., {
     maxRetries: 0 // override maxRetries at the request level
 });
 ```
@@ -176,7 +189,7 @@ const response = await client.cards.create(..., {
 The SDK defaults to a 60 second timeout. Use the `timeoutInSeconds` option to configure this behavior.
 
 ```typescript
-const response = await client.cards.create(..., {
+const response = await client.customerCards.stamp(..., {
     timeoutInSeconds: 30 // override timeout to 30s
 });
 ```
@@ -187,7 +200,7 @@ The SDK allows users to abort requests at any point by passing in an abort signa
 
 ```typescript
 const controller = new AbortController();
-const response = await client.cards.create(..., {
+const response = await client.customerCards.stamp(..., {
     abortSignal: controller.signal
 });
 controller.abort(); // aborts the request
@@ -199,7 +212,7 @@ The SDK provides access to raw response data, including headers, through the `.w
 The `.withRawResponse()` method returns a promise that results to an object with a `data` and a `rawResponse` property.
 
 ```typescript
-const { data, rawResponse } = await client.cards.create(...).withRawResponse();
+const { data, rawResponse } = await client.customerCards.stamp(...).withRawResponse();
 
 console.log(data);
 console.log(rawResponse.headers['X-My-Header']);

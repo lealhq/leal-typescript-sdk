@@ -15,9 +15,9 @@
             "keywords": ["leal", "loyalty", "stamp cards", "apple wallet", "google wallet"]
         }
     },
-    "originGitCommit": "1ac63d1266a2e1fa65495a243730b91cc7bb36c7",
+    "originGitCommit": "1f6ccbec27260951c40d23a4eb22fce9d7d2c2ea",
     "originGitCommitIsDirty": false,
     "invokedBy": "ci",
     "ciProvider": "github",
-    "sdkVersion": "0.0.3"
+    "sdkVersion": "0.0.4"
 }
