@@ -1,0 +1,23 @@
+{
+    "cliVersion": "5.102.0",
+    "generatorName": "fernapi/fern-typescript-sdk",
+    "generatorVersion": "3.88.2",
+    "generatorConfig": {
+        "namespaceExport": "Leal",
+        "includeApiReference": true,
+        "allowCustomFetcher": true,
+        "skipResponseValidation": true,
+        "packageJson": {
+            "name": "@lealhq/leal",
+            "description": "TypeScript and JavaScript client for the Leal loyalty API.",
+            "homepage": "https://www.getleal.com/developers",
+            "repository": "https://github.com/lealhq/leal-typescript-sdk",
+            "keywords": ["leal", "loyalty", "stamp cards", "apple wallet", "google wallet"]
+        }
+    },
+    "originGitCommit": "1ac63d1266a2e1fa65495a243730b91cc7bb36c7",
+    "originGitCommitIsDirty": false,
+    "invokedBy": "ci",
+    "ciProvider": "github",
+    "sdkVersion": "0.0.3"
+}
