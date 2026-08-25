@@ -36,6 +36,7 @@ export class PostersClient {
      *
      * @throws {@link Leal.UnauthorizedError}
      * @throws {@link Leal.NotFoundError}
+     * @throws {@link Leal.GoneError}
      * @throws {@link Leal.TooManyRequestsError}
      * @throws {@link errors.LealError}
      * @throws {@link errors.LealTimeoutError}
@@ -97,6 +98,8 @@ export class PostersClient {
                     throw new Leal.UnauthorizedError(_response.error.body as Leal.Error_, _response.rawResponse);
                 case 404:
                     throw new Leal.NotFoundError(_response.error.body as Leal.Error_, _response.rawResponse);
+                case 410:
+                    throw new Leal.GoneError(_response.error.body as Leal.Error_, _response.rawResponse);
                 case 429:
                     throw new Leal.TooManyRequestsError(_response.error.body as Leal.Error_, _response.rawResponse);
                 default:
@@ -126,6 +129,7 @@ export class PostersClient {
      *
      * @throws {@link Leal.UnauthorizedError}
      * @throws {@link Leal.NotFoundError}
+     * @throws {@link Leal.GoneError}
      * @throws {@link Leal.UnprocessableEntityError}
      * @throws {@link Leal.TooManyRequestsError}
      * @throws {@link errors.LealError}
@@ -186,6 +190,8 @@ export class PostersClient {
                     throw new Leal.UnauthorizedError(_response.error.body as Leal.Error_, _response.rawResponse);
                 case 404:
                     throw new Leal.NotFoundError(_response.error.body as Leal.Error_, _response.rawResponse);
+                case 410:
+                    throw new Leal.GoneError(_response.error.body as Leal.Error_, _response.rawResponse);
                 case 422:
                     throw new Leal.UnprocessableEntityError(_response.error.body as Leal.Error_, _response.rawResponse);
                 case 429:
@@ -215,6 +221,7 @@ export class PostersClient {
      *
      * @throws {@link Leal.UnauthorizedError}
      * @throws {@link Leal.NotFoundError}
+     * @throws {@link Leal.GoneError}
      * @throws {@link Leal.TooManyRequestsError}
      * @throws {@link errors.LealError}
      * @throws {@link errors.LealTimeoutError}
@@ -269,6 +276,8 @@ export class PostersClient {
                     throw new Leal.UnauthorizedError(_response.error.body as Leal.Error_, _response.rawResponse);
                 case 404:
                     throw new Leal.NotFoundError(_response.error.body as Leal.Error_, _response.rawResponse);
+                case 410:
+                    throw new Leal.GoneError(_response.error.body as Leal.Error_, _response.rawResponse);
                 case 429:
                     throw new Leal.TooManyRequestsError(_response.error.body as Leal.Error_, _response.rawResponse);
                 default:
@@ -296,6 +305,7 @@ export class PostersClient {
      *
      * @throws {@link Leal.UnauthorizedError}
      * @throws {@link Leal.NotFoundError}
+     * @throws {@link Leal.GoneError}
      * @throws {@link Leal.UnprocessableEntityError}
      * @throws {@link Leal.TooManyRequestsError}
      * @throws {@link errors.LealError}
@@ -351,6 +361,8 @@ export class PostersClient {
                     throw new Leal.UnauthorizedError(_response.error.body as Leal.Error_, _response.rawResponse);
                 case 404:
                     throw new Leal.NotFoundError(_response.error.body as Leal.Error_, _response.rawResponse);
+                case 410:
+                    throw new Leal.GoneError(_response.error.body as Leal.Error_, _response.rawResponse);
                 case 422:
                     throw new Leal.UnprocessableEntityError(_response.error.body as Leal.Error_, _response.rawResponse);
                 case 429:
@@ -380,6 +392,7 @@ export class PostersClient {
      *
      * @throws {@link Leal.UnauthorizedError}
      * @throws {@link Leal.NotFoundError}
+     * @throws {@link Leal.GoneError}
      * @throws {@link Leal.UnprocessableEntityError}
      * @throws {@link Leal.TooManyRequestsError}
      * @throws {@link errors.LealError}
@@ -439,6 +452,8 @@ export class PostersClient {
                     throw new Leal.UnauthorizedError(_response.error.body as Leal.Error_, _response.rawResponse);
                 case 404:
                     throw new Leal.NotFoundError(_response.error.body as Leal.Error_, _response.rawResponse);
+                case 410:
+                    throw new Leal.GoneError(_response.error.body as Leal.Error_, _response.rawResponse);
                 case 422:
                     throw new Leal.UnprocessableEntityError(_response.error.body as Leal.Error_, _response.rawResponse);
                 case 429:

@@ -98,6 +98,27 @@ describe("CardsClient", () => {
             .mockEndpoint()
             .get("/api/v1/accounts/1/cards")
             .respondWith()
+            .statusCode(410)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.cards.list({
+                account_id: 1,
+            });
+        }).rejects.toThrow(Leal.GoneError);
+    });
+
+    test("list (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .get("/api/v1/accounts/1/cards")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -213,6 +234,31 @@ describe("CardsClient", () => {
             .post("/api/v1/accounts/1/cards")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(410)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.cards.create({
+                account_id: 1,
+                card: {
+                    name: "name",
+                },
+            });
+        }).rejects.toThrow(Leal.GoneError);
+    });
+
+    test("create (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = { card: { name: "name" } };
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .post("/api/v1/accounts/1/cards")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(422)
             .jsonBody(rawResponseBody)
             .build();
@@ -227,7 +273,7 @@ describe("CardsClient", () => {
         }).rejects.toThrow(Leal.UnprocessableEntityError);
     });
 
-    test("create (5)", async () => {
+    test("create (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { card: { name: "name" } };
@@ -337,6 +383,28 @@ describe("CardsClient", () => {
     });
 
     test("get (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .get("/api/v1/accounts/1/cards/1")
+            .respondWith()
+            .statusCode(410)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.cards.get({
+                account_id: 1,
+                id: 1,
+            });
+        }).rejects.toThrow(Leal.GoneError);
+    });
+
+    test("get (5)", async () => {
         const server = mockServerPool.createServer();
         const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
@@ -459,6 +527,30 @@ describe("CardsClient", () => {
             .patch("/api/v1/accounts/1/cards/1")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(410)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.cards.update({
+                account_id: 1,
+                id: 1,
+                card: {},
+            });
+        }).rejects.toThrow(Leal.GoneError);
+    });
+
+    test("update (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = { card: {} };
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .patch("/api/v1/accounts/1/cards/1")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(422)
             .jsonBody(rawResponseBody)
             .build();
@@ -472,7 +564,7 @@ describe("CardsClient", () => {
         }).rejects.toThrow(Leal.UnprocessableEntityError);
     });
 
-    test("update (5)", async () => {
+    test("update (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { card: {} };

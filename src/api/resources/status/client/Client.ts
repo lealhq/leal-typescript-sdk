@@ -37,6 +37,7 @@ export class StatusClient {
      *
      * @param {StatusClient.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link Leal.GoneError}
      * @throws {@link Leal.TooManyRequestsError}
      * @throws {@link errors.LealError}
      * @throws {@link errors.LealTimeoutError}
@@ -79,6 +80,8 @@ export class StatusClient {
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
+                case 410:
+                    throw new Leal.GoneError(_response.error.body as Leal.Error_, _response.rawResponse);
                 case 429:
                     throw new Leal.TooManyRequestsError(_response.error.body as Leal.Error_, _response.rawResponse);
                 default:

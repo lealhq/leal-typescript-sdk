@@ -14,6 +14,7 @@ export interface CheckStatusResponse {
     rate_limit: CheckStatusResponse.RateLimit;
     /** 'ok' while the API is serving requests */
     status: string;
+    versioning: CheckStatusResponse.Versioning;
 }
 
 export namespace CheckStatusResponse {
@@ -24,5 +25,18 @@ export namespace CheckStatusResponse {
         scope: string;
         /** Length of the window in seconds */
         window_seconds: number;
+    }
+
+    export interface Versioning {
+        /** The version to build against */
+        current: string;
+        /** Versions that are deprecated but still serving */
+        deprecated: string[];
+        /** The published versioning and deprecation policy */
+        policy_url: string;
+        /** The headers a deprecated version sends */
+        signalling: string;
+        /** Every version still serving requests */
+        supported: string[];
     }
 }

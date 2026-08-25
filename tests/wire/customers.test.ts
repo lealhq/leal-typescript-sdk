@@ -77,6 +77,27 @@ describe("CustomersClient", () => {
             .mockEndpoint()
             .get("/api/v1/accounts/1/customers")
             .respondWith()
+            .statusCode(410)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.customers.list({
+                account_id: 1,
+            });
+        }).rejects.toThrow(Leal.GoneError);
+    });
+
+    test("list (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .get("/api/v1/accounts/1/customers")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -187,6 +208,31 @@ describe("CustomersClient", () => {
             .post("/api/v1/accounts/1/customers")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(410)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.customers.create({
+                account_id: 1,
+                customer: {
+                    first_name: "first_name",
+                },
+            });
+        }).rejects.toThrow(Leal.GoneError);
+    });
+
+    test("create (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = { customer: { first_name: "first_name" } };
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .post("/api/v1/accounts/1/customers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(422)
             .jsonBody(rawResponseBody)
             .build();
@@ -201,7 +247,7 @@ describe("CustomersClient", () => {
         }).rejects.toThrow(Leal.UnprocessableEntityError);
     });
 
-    test("create (5)", async () => {
+    test("create (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { customer: { first_name: "first_name" } };
@@ -306,6 +352,28 @@ describe("CustomersClient", () => {
     });
 
     test("get (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .get("/api/v1/accounts/1/customers/1")
+            .respondWith()
+            .statusCode(410)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.customers.get({
+                account_id: 1,
+                id: 1,
+            });
+        }).rejects.toThrow(Leal.GoneError);
+    });
+
+    test("get (5)", async () => {
         const server = mockServerPool.createServer();
         const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
@@ -423,6 +491,30 @@ describe("CustomersClient", () => {
             .patch("/api/v1/accounts/1/customers/1")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(410)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.customers.update({
+                account_id: 1,
+                id: 1,
+                customer: {},
+            });
+        }).rejects.toThrow(Leal.GoneError);
+    });
+
+    test("update (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = { customer: {} };
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .patch("/api/v1/accounts/1/customers/1")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(422)
             .jsonBody(rawResponseBody)
             .build();
@@ -436,7 +528,7 @@ describe("CustomersClient", () => {
         }).rejects.toThrow(Leal.UnprocessableEntityError);
     });
 
-    test("update (5)", async () => {
+    test("update (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { customer: {} };

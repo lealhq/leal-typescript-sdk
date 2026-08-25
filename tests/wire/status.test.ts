@@ -17,6 +17,13 @@ describe("StatusClient", () => {
             openapi_url: "openapi_url",
             rate_limit: { limit: 1, scope: "scope", window_seconds: 1 },
             status: "status",
+            versioning: {
+                current: "current",
+                deprecated: ["deprecated"],
+                policy_url: "policy_url",
+                signalling: "signalling",
+                supported: ["supported"],
+            },
         };
 
         server.mockEndpoint().get("/api/v1/status").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
@@ -26,6 +33,19 @@ describe("StatusClient", () => {
     });
 
     test("check (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {};
+
+        server.mockEndpoint().get("/api/v1/status").respondWith().statusCode(410).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.status.check();
+        }).rejects.toThrow(Leal.GoneError);
+    });
+
+    test("check (3)", async () => {
         const server = mockServerPool.createServer();
         const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 

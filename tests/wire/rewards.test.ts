@@ -90,6 +90,27 @@ describe("RewardsClient", () => {
             .mockEndpoint()
             .get("/api/v1/accounts/1/rewards")
             .respondWith()
+            .statusCode(410)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.rewards.list({
+                account_id: 1,
+            });
+        }).rejects.toThrow(Leal.GoneError);
+    });
+
+    test("list (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .get("/api/v1/accounts/1/rewards")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -203,6 +224,33 @@ describe("RewardsClient", () => {
             .post("/api/v1/accounts/1/rewards")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(410)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.rewards.create({
+                account_id: 1,
+                reward: {
+                    card_id: 1,
+                    name: "name",
+                    stamps_required: 1,
+                },
+            });
+        }).rejects.toThrow(Leal.GoneError);
+    });
+
+    test("create (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = { reward: { card_id: 1, name: "name", stamps_required: 1 } };
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .post("/api/v1/accounts/1/rewards")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(422)
             .jsonBody(rawResponseBody)
             .build();
@@ -219,7 +267,7 @@ describe("RewardsClient", () => {
         }).rejects.toThrow(Leal.UnprocessableEntityError);
     });
 
-    test("create (5)", async () => {
+    test("create (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { reward: { card_id: 1, name: "name", stamps_required: 1 } };
@@ -332,6 +380,28 @@ describe("RewardsClient", () => {
             .mockEndpoint()
             .get("/api/v1/accounts/1/rewards/1")
             .respondWith()
+            .statusCode(410)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.rewards.get({
+                account_id: 1,
+                id: 1,
+            });
+        }).rejects.toThrow(Leal.GoneError);
+    });
+
+    test("get (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .get("/api/v1/accounts/1/rewards/1")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -411,6 +481,28 @@ describe("RewardsClient", () => {
             .mockEndpoint()
             .delete("/api/v1/accounts/1/rewards/1")
             .respondWith()
+            .statusCode(410)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.rewards.delete({
+                account_id: 1,
+                id: 1,
+            });
+        }).rejects.toThrow(Leal.GoneError);
+    });
+
+    test("delete (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .delete("/api/v1/accounts/1/rewards/1")
+            .respondWith()
             .statusCode(422)
             .jsonBody(rawResponseBody)
             .build();
@@ -423,7 +515,7 @@ describe("RewardsClient", () => {
         }).rejects.toThrow(Leal.UnprocessableEntityError);
     });
 
-    test("delete (5)", async () => {
+    test("delete (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
@@ -538,6 +630,30 @@ describe("RewardsClient", () => {
             .patch("/api/v1/accounts/1/rewards/1")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(410)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.rewards.update({
+                account_id: 1,
+                id: 1,
+                reward: {},
+            });
+        }).rejects.toThrow(Leal.GoneError);
+    });
+
+    test("update (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = { reward: {} };
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .patch("/api/v1/accounts/1/rewards/1")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(422)
             .jsonBody(rawResponseBody)
             .build();
@@ -551,7 +667,7 @@ describe("RewardsClient", () => {
         }).rejects.toThrow(Leal.UnprocessableEntityError);
     });
 
-    test("update (5)", async () => {
+    test("update (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { reward: {} };

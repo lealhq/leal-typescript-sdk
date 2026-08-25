@@ -97,6 +97,28 @@ describe("CustomerCardsClient", () => {
             .mockEndpoint()
             .get("/api/v1/accounts/1/customers/1/customer_cards")
             .respondWith()
+            .statusCode(410)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.customerCards.list({
+                account_id: 1,
+                customer_id: 1,
+            });
+        }).rejects.toThrow(Leal.GoneError);
+    });
+
+    test("list (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .get("/api/v1/accounts/1/customers/1/customer_cards")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -196,6 +218,29 @@ describe("CustomerCardsClient", () => {
     });
 
     test("get (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .get("/api/v1/accounts/1/customers/1/customer_cards/1")
+            .respondWith()
+            .statusCode(410)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.customerCards.get({
+                account_id: 1,
+                customer_id: 1,
+                id: 1,
+            });
+        }).rejects.toThrow(Leal.GoneError);
+    });
+
+    test("get (5)", async () => {
         const server = mockServerPool.createServer();
         const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
@@ -313,6 +358,31 @@ describe("CustomerCardsClient", () => {
             .post("/api/v1/accounts/1/customers/1/customer_cards/1/redeem")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(410)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.customerCards.redeem({
+                account_id: 1,
+                customer_id: 1,
+                id: 1,
+                reward_id: 1,
+            });
+        }).rejects.toThrow(Leal.GoneError);
+    });
+
+    test("redeem (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = { reward_id: 1 };
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .post("/api/v1/accounts/1/customers/1/customer_cards/1/redeem")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(422)
             .jsonBody(rawResponseBody)
             .build();
@@ -327,7 +397,7 @@ describe("CustomerCardsClient", () => {
         }).rejects.toThrow(Leal.UnprocessableEntityError);
     });
 
-    test("redeem (5)", async () => {
+    test("redeem (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { reward_id: 1 };
@@ -455,6 +525,31 @@ describe("CustomerCardsClient", () => {
             .post("/api/v1/accounts/1/customers/1/customer_cards/1/stamp")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(410)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.customerCards.stamp({
+                account_id: 1,
+                customer_id: 1,
+                id: 1,
+                stamps: 1,
+            });
+        }).rejects.toThrow(Leal.GoneError);
+    });
+
+    test("stamp (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = { stamps: 1 };
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .post("/api/v1/accounts/1/customers/1/customer_cards/1/stamp")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(422)
             .jsonBody(rawResponseBody)
             .build();
@@ -469,7 +564,7 @@ describe("CustomerCardsClient", () => {
         }).rejects.toThrow(Leal.UnprocessableEntityError);
     });
 
-    test("stamp (5)", async () => {
+    test("stamp (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { stamps: 1 };
