@@ -3,12 +3,16 @@
 export interface UpdateCardsResponse {
     /** ISO 8601 timestamp when the card was archived, or null if active */
     archived_at: string;
+    /** Up to two extra front-of-pass fields */
+    auxiliary_fields: string[];
     /** Hex colour for the card background (e.g. '#6B4226') */
     card_color: string;
     /** ISO 8601 creation timestamp */
     created_at: string;
     /** Number of customer card instances issued */
     customer_cards_count: number;
+    /** ISO 8601 timestamp when the card expires, or null if it does not expire */
+    expires_at: string;
     /** Optional header text displayed on the card */
     header_text: string;
     /** Unique card ID */
@@ -19,6 +23,10 @@ export interface UpdateCardsResponse {
     name: string;
     /** Number of rewards defined for this card */
     rewards_count: number;
+    /** Whether wallet passes show the member name field */
+    show_member_field: boolean;
+    /** Whether wallet passes show the stamps-to-reward field */
+    show_stamps_to_reward_field: boolean;
     /** Hex colour for stamp backgrounds */
     stamp_background_color: string;
     /** Hex colour for stamp icons */

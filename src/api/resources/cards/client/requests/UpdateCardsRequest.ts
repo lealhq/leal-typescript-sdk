@@ -18,14 +18,22 @@ export interface UpdateCardsRequest {
 
 export namespace UpdateCardsRequest {
     export interface Card {
+        /** Up to two extra front-of-pass fields. Blank values are ignored. */
+        auxiliary_fields?: string[] | undefined;
         /** Hex colour for the card background */
         card_color?: string | undefined;
+        /** Card expiry timestamp (ISO 8601) */
+        expires_at?: string | undefined;
         /** Optional header text displayed on the card */
         header_text?: string | undefined;
         /** Pre-filled stamps (must be >= 0 and < stamps_required) */
         initial_stamps?: number | undefined;
         /** Card name */
         name?: string | undefined;
+        /** Whether wallet passes show the member name field */
+        show_member_field?: boolean | undefined;
+        /** Whether wallet passes show the stamps-to-reward field */
+        show_stamps_to_reward_field?: boolean | undefined;
         /** Hex colour for stamp backgrounds */
         stamp_background_color?: string | undefined;
         /** Hex colour for stamp icons */

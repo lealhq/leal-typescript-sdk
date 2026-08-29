@@ -21,10 +21,20 @@ export namespace CreatePostersRequest {
         active?: boolean | undefined;
         /** ID of the loyalty card this poster links to */
         card_id: number;
+        /** Which contact fields appear on the public signup form */
+        contact_collection_mode?: string | undefined;
+        /** Minimum customer age required for signup. Requires require_birthday to be true. */
+        minimum_age?: number | undefined;
         /** Print size – one of: a4, a5, a6, letter */
         paper_size?: string | undefined;
         /** Primary brand color as a hex string (e.g. '#FF5733') */
         primary_color?: string | undefined;
+        /** Whether date of birth is required on the public signup form */
+        require_birthday?: boolean | undefined;
+        /** Whether email is required when it is collected */
+        require_email?: boolean | undefined;
+        /** Whether phone number is required when it is collected */
+        require_phone?: boolean | undefined;
         /** Secondary brand color as a hex string */
         secondary_color?: string | undefined;
         /** Text color as a hex string */

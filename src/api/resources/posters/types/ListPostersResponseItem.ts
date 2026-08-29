@@ -7,18 +7,32 @@ export interface ListPostersResponseItem {
     active: boolean;
     /** Loyalty card customers are signed up to */
     card_id: number;
+    /** Whether the public signup form collects email */
+    collect_email: boolean;
+    /** Whether the public signup form collects phone number */
+    collect_phone: boolean;
+    /** Which contact fields appear on the public signup form: 'email_and_phone', 'email_only', or 'phone_only' */
+    contact_collection_mode: string;
     /** ISO 8601 creation timestamp */
     created_at: string;
     /** URL of the on screen version of the poster */
     display_url: string;
     /** Unique poster ID */
     id: number;
+    /** Minimum customer age required for signup */
+    minimum_age: number;
     /** Paper size the poster is laid out for */
     paper_size: string;
     /** Hex colour for the poster background */
     primary_color: string;
     /** URL encoded in the QR code */
     qr_code_url: string;
+    /** Whether date of birth is required on the public signup form */
+    require_birthday: boolean;
+    /** Whether email is required when it is collected */
+    require_email: boolean;
+    /** Whether phone number is required when it is collected */
+    require_phone: boolean;
     /** Hex accent colour */
     secondary_color: string;
     /** Public URL the QR code points at */
