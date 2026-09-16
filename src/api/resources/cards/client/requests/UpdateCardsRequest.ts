@@ -44,6 +44,8 @@ export namespace UpdateCardsRequest {
         stamps_required?: number | undefined;
         /** Hex colour for the strip */
         strip_color?: string | undefined;
+        /** Opacity (0–100) of the strip background over the card colour. 100 renders the colour or image exactly as supplied */
+        strip_opacity?: number | undefined;
         /** Preset strip image identifier */
         strip_preset?: string | undefined;
         /** Strip image type */

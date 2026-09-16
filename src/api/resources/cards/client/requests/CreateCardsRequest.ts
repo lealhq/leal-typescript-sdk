@@ -43,6 +43,8 @@ export namespace CreateCardsRequest {
         stamps_required?: number | undefined;
         /** Hex colour for the strip (used when strip_type is 'color') */
         strip_color?: string | undefined;
+        /** Opacity (0–100) of the strip background over the card colour. Defaults to 100, which renders the colour or image exactly as supplied */
+        strip_opacity?: number | undefined;
         /** Preset strip image identifier (used when strip_type is 'preset') */
         strip_preset?: string | undefined;
         /** Strip image type */

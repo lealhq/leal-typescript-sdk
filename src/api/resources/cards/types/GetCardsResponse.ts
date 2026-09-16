@@ -37,6 +37,8 @@ export interface GetCardsResponse {
     stamps_required: number;
     /** Hex colour for the strip (when strip_type is 'color') */
     strip_color: string;
+    /** Opacity (0–100) of the strip background over the card colour, for a colour, an uploaded image or a preset alike. 100 renders the colour or image exactly as supplied; lower values let the card colour show through */
+    strip_opacity: number;
     /** Preset strip image identifier (when strip_type is 'preset') */
     strip_preset: string;
     /** Strip image type: 'color', 'image', or 'preset' */
