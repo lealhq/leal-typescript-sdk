@@ -1,6 +1,6 @@
 {
     "name": "@lealhq/leal",
-    "version": "0.0.11",
+    "version": "0.0.12",
     "private": false,
     "repository": {
         "type": "git",
@@ -99,6 +99,17 @@
                 "default": "./dist/cjs/api/resources/rewards/exports.js"
             },
             "default": "./dist/cjs/api/resources/rewards/exports.js"
+        },
+        "./webhookSubscriptions": {
+            "import": {
+                "types": "./dist/esm/api/resources/webhookSubscriptions/exports.d.mts",
+                "default": "./dist/esm/api/resources/webhookSubscriptions/exports.mjs"
+            },
+            "require": {
+                "types": "./dist/cjs/api/resources/webhookSubscriptions/exports.d.ts",
+                "default": "./dist/cjs/api/resources/webhookSubscriptions/exports.js"
+            },
+            "default": "./dist/cjs/api/resources/webhookSubscriptions/exports.js"
         },
         "./status": {
             "import": {

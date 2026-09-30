@@ -21,3 +21,6 @@ export * from "./status/types/index.js";
 export * from "./stores/client/requests/index.js";
 export * as stores from "./stores/index.js";
 export * from "./stores/types/index.js";
+export * from "./webhookSubscriptions/client/requests/index.js";
+export * as webhookSubscriptions from "./webhookSubscriptions/index.js";
+export * from "./webhookSubscriptions/types/index.js";

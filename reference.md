@@ -2027,6 +2027,473 @@ await client.rewards.update({
 </dl>
 </details>
 
+## Webhook Subscriptions
+<details><summary><code>client.webhookSubscriptions.<a href="/src/api/resources/webhookSubscriptions/client/Client.ts">getApiV1AccountsAccountIdWebhookSubscriptions</a>({ ...params }) -> Leal.GetApiV1AccountsAccountIdWebhookSubscriptionsResponseItem[]</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns every webhook subscription for the store, oldest first. Signing secrets are not included; fetch a single subscription to read its secret.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.webhookSubscriptions.getApiV1AccountsAccountIdWebhookSubscriptions({
+    account_id: 1
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Leal.GetApiV1AccountsAccountIdWebhookSubscriptionsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `WebhookSubscriptionsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.webhookSubscriptions.<a href="/src/api/resources/webhookSubscriptions/client/Client.ts">postApiV1AccountsAccountIdWebhookSubscriptions</a>({ ...params }) -> Leal.PostApiV1AccountsAccountIdWebhookSubscriptionsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Subscribes a URL to one or more events. The response includes the signing `secret`; store it to
+verify deliveries. The URL must be publicly reachable over https.
+
+Events: `customer.created`, `customer.updated`, `customer_card.created`, `stamp.earned`, `stamp.removed`, `reward.unlocked`, `reward.redeemed`, or `*` for all of them.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.webhookSubscriptions.postApiV1AccountsAccountIdWebhookSubscriptions({
+    account_id: 1,
+    target_url: "target_url"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Leal.PostApiV1AccountsAccountIdWebhookSubscriptionsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `WebhookSubscriptionsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.webhookSubscriptions.<a href="/src/api/resources/webhookSubscriptions/client/Client.ts">getApiV1AccountsAccountIdWebhookSubscriptionsId</a>({ ...params }) -> Leal.GetApiV1AccountsAccountIdWebhookSubscriptionsIdResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a single subscription, including its signing secret and the result of the most recent delivery.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.webhookSubscriptions.getApiV1AccountsAccountIdWebhookSubscriptionsId({
+    account_id: 1,
+    id: 1
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Leal.GetApiV1AccountsAccountIdWebhookSubscriptionsIdRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `WebhookSubscriptionsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.webhookSubscriptions.<a href="/src/api/resources/webhookSubscriptions/client/Client.ts">deleteApiV1AccountsAccountIdWebhookSubscriptionsId</a>({ ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Stops deliveries and deletes the subscription. This cannot be undone.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.webhookSubscriptions.deleteApiV1AccountsAccountIdWebhookSubscriptionsId({
+    account_id: 1,
+    id: 1
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Leal.DeleteApiV1AccountsAccountIdWebhookSubscriptionsIdRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `WebhookSubscriptionsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.webhookSubscriptions.<a href="/src/api/resources/webhookSubscriptions/client/Client.ts">patchApiV1AccountsAccountIdWebhookSubscriptionsId</a>({ ...params }) -> Leal.PatchApiV1AccountsAccountIdWebhookSubscriptionsIdResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Changes the URL, events, label or payload format, or turns the subscription off and on. Re-enabling a subscription that was disabled for failing clears its failure state.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.webhookSubscriptions.patchApiV1AccountsAccountIdWebhookSubscriptionsId({
+    account_id: 1,
+    id: 1
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Leal.PatchApiV1AccountsAccountIdWebhookSubscriptionsIdRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `WebhookSubscriptionsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.webhookSubscriptions.<a href="/src/api/resources/webhookSubscriptions/client/Client.ts">postApiV1AccountsAccountIdWebhookSubscriptionsIdRotateSecret</a>({ ...params }) -> Leal.PostApiV1AccountsAccountIdWebhookSubscriptionsIdRotateSecretResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Replaces the subscription's signing secret. Deliveries are signed with the new secret straight away, so update your receiver at the same time.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.webhookSubscriptions.postApiV1AccountsAccountIdWebhookSubscriptionsIdRotateSecret({
+    account_id: 1,
+    id: 1
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Leal.PostApiV1AccountsAccountIdWebhookSubscriptionsIdRotateSecretRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `WebhookSubscriptionsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.webhookSubscriptions.<a href="/src/api/resources/webhookSubscriptions/client/Client.ts">postApiV1AccountsAccountIdWebhookSubscriptionsIdTest</a>({ ...params }) -> Leal.PostApiV1AccountsAccountIdWebhookSubscriptionsIdTestResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Immediately sends a signed `webhook.test` event to the subscription's URL and reports what
+happened, so you can check your endpoint and signature verification without waiting for real
+activity. Test events are not retried and do not count towards disabling the subscription.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.webhookSubscriptions.postApiV1AccountsAccountIdWebhookSubscriptionsIdTest({
+    account_id: 1,
+    id: 1
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Leal.PostApiV1AccountsAccountIdWebhookSubscriptionsIdTestRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `WebhookSubscriptionsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Status
 <details><summary><code>client.status.<a href="/src/api/resources/status/client/Client.ts">check</a>() -> Leal.CheckStatusResponse</code></summary>
 <dl>

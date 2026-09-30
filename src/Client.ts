@@ -8,6 +8,7 @@ import { PostersClient } from "./api/resources/posters/client/Client.js";
 import { RewardsClient } from "./api/resources/rewards/client/Client.js";
 import { StatusClient } from "./api/resources/status/client/Client.js";
 import { StoresClient } from "./api/resources/stores/client/Client.js";
+import { WebhookSubscriptionsClient } from "./api/resources/webhookSubscriptions/client/Client.js";
 import type { BaseClientOptions, BaseRequestOptions } from "./BaseClient.js";
 import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "./BaseClient.js";
 import * as core from "./core/index.js";
@@ -27,6 +28,7 @@ export class LealClient {
     protected _locations: LocationsClient | undefined;
     protected _posters: PostersClient | undefined;
     protected _rewards: RewardsClient | undefined;
+    protected _webhookSubscriptions: WebhookSubscriptionsClient | undefined;
     protected _status: StatusClient | undefined;
 
     constructor(options: LealClient.Options) {
@@ -59,6 +61,10 @@ export class LealClient {
 
     public get rewards(): RewardsClient {
         return (this._rewards ??= new RewardsClient(this._options));
+    }
+
+    public get webhookSubscriptions(): WebhookSubscriptionsClient {
+        return (this._webhookSubscriptions ??= new WebhookSubscriptionsClient(this._options));
     }
 
     public get status(): StatusClient {
