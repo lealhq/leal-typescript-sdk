@@ -29,6 +29,14 @@ export namespace CreateCardsRequest {
         initial_stamps?: number | undefined;
         /** Card name (e.g. 'Coffee Loyalty Card') */
         name: string;
+        /** What the wallet pass QR holds. Defaults to 'link' for new cards */
+        qr_style?: Card.QrStyle | undefined;
+        /** Stamps the invited friend gets on their first stamped visit (>= 0 and < stamps_required, default 1) */
+        referee_stamps?: number | undefined;
+        /** Let customers invite friends from the back of their pass (default false) */
+        referrals_enabled?: boolean | undefined;
+        /** Stamps the inviting customer gets when the friend's first visit is stamped (>= 0 and < stamps_required, default 1) */
+        referrer_stamps?: number | undefined;
         /** Whether wallet passes show the member name field */
         show_member_field?: boolean | undefined;
         /** Whether wallet passes show the stamps-to-reward field */
@@ -51,5 +59,14 @@ export namespace CreateCardsRequest {
         strip_type?: string | undefined;
         /** Hex colour for card text */
         text_color?: string | undefined;
+    }
+
+    export namespace Card {
+        /** What the wallet pass QR holds. Defaults to 'link' for new cards */
+        export const QrStyle = {
+            Link: "link",
+            Code: "code",
+        } as const;
+        export type QrStyle = (typeof QrStyle)[keyof typeof QrStyle];
     }
 }

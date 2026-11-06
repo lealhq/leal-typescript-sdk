@@ -9,7 +9,7 @@
 export interface ListCustomersRequest {
     /** Store (account) ID */
     account_id: number;
-    /** Search query to filter customers by name, email, phone, card code (barcode), or external reference ID */
+    /** Search query to filter customers by name, email, phone, card code (barcode, or the full scanned QR text), or external reference ID */
     search?: string;
     /** External system slug (e.g. `square`, `shopify`). When combined with `external_id`, performs an exact lookup. */
     source?: string;

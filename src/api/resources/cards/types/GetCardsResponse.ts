@@ -21,6 +21,14 @@ export interface GetCardsResponse {
     initial_stamps: number;
     /** Card name (e.g. 'Coffee Loyalty Card') */
     name: string;
+    /** What the wallet pass QR holds: 'link' (the customer's invite link with the card code after the #, readable by the Leal scanner and by `search`) or 'code' (the bare card code). Cards created before referrals use 'code' */
+    qr_style: string;
+    /** Stamps the invited friend gets when the referral pays out */
+    referee_stamps: number;
+    /** Whether customers can invite friends from the back of their pass. A referral pays out when the store first stamps the friend's card for a visit (a scan, or the API/POS), never for signing up */
+    referrals_enabled: boolean;
+    /** Stamps the inviting customer gets when the referral pays out */
+    referrer_stamps: number;
     /** Number of rewards defined for this card */
     rewards_count: number;
     /** Whether wallet passes show the member name field */

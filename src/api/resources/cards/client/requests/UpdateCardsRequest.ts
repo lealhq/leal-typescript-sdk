@@ -30,6 +30,14 @@ export namespace UpdateCardsRequest {
         initial_stamps?: number | undefined;
         /** Card name */
         name?: string | undefined;
+        /** What the wallet pass QR holds. Changing it refreshes installed passes; passes still showing the old QR keep scanning */
+        qr_style?: Card.QrStyle | undefined;
+        /** Stamps the invited friend gets (>= 0 and < stamps_required) */
+        referee_stamps?: number | undefined;
+        /** Let customers invite friends from the back of their pass. Installed passes are refreshed, as for any card change */
+        referrals_enabled?: boolean | undefined;
+        /** Stamps the inviting customer gets (>= 0 and < stamps_required) */
+        referrer_stamps?: number | undefined;
         /** Whether wallet passes show the member name field */
         show_member_field?: boolean | undefined;
         /** Whether wallet passes show the stamps-to-reward field */
@@ -52,5 +60,14 @@ export namespace UpdateCardsRequest {
         strip_type?: string | undefined;
         /** Hex colour for card text */
         text_color?: string | undefined;
+    }
+
+    export namespace Card {
+        /** What the wallet pass QR holds. Changing it refreshes installed passes; passes still showing the old QR keep scanning */
+        export const QrStyle = {
+            Link: "link",
+            Code: "code",
+        } as const;
+        export type QrStyle = (typeof QrStyle)[keyof typeof QrStyle];
     }
 }

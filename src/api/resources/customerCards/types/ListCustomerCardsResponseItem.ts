@@ -19,6 +19,8 @@ export interface ListCustomerCardsResponseItem {
     pass_installed: boolean;
     /** Completion towards the next reward, 0 to 100 */
     progress_percentage: number;
+    /** The customer's invite link while the card has referrals on (null otherwise). Safe to share: it names the customer as referrer and can't be used to stamp or redeem */
+    referral_url: string;
     /** Stamps collected so far */
     stamps_count: number;
     /** Stamps still needed to complete the card */
@@ -27,6 +29,6 @@ export interface ListCustomerCardsResponseItem {
     status: string;
     /** ISO 8601 last-update timestamp */
     updated_at: string;
-    /** Public identifier used in wallet pass URLs */
+    /** The card code: what the store scanner reads from the wallet pass QR and what staff can type in. Treat it like a membership number; it can be used to stamp and redeem */
     uuid: string;
 }
