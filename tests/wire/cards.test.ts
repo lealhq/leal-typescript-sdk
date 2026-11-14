@@ -11,12 +11,16 @@ describe("CardsClient", () => {
 
         const rawResponseBody = [
             {
+                apple_pass_style: "apple_pass_style",
                 archived_at: "archived_at",
                 auxiliary_fields: ["auxiliary_fields"],
                 card_color: "card_color",
                 created_at: "created_at",
                 customer_cards_count: 1,
                 expires_at: "expires_at",
+                featured_actions: ["featured_actions"],
+                google_logo_style: "google_logo_style",
+                google_wallet: { hero_image: "hero_image", text_color: "text_color", warnings: ["warnings"] },
                 header_text: "header_text",
                 id: 1,
                 initial_stamps: 1,
@@ -144,12 +148,16 @@ describe("CardsClient", () => {
         const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { card: { name: "name" } };
         const rawResponseBody = {
+            apple_pass_style: "apple_pass_style",
             archived_at: "archived_at",
             auxiliary_fields: ["auxiliary_fields"],
             card_color: "card_color",
             created_at: "created_at",
             customer_cards_count: 1,
             expires_at: "expires_at",
+            featured_actions: ["featured_actions"],
+            google_logo_style: "google_logo_style",
+            google_wallet: { hero_image: "hero_image", text_color: "text_color", warnings: ["warnings"] },
             header_text: "header_text",
             id: 1,
             initial_stamps: 1,
@@ -321,12 +329,16 @@ describe("CardsClient", () => {
         const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
+            apple_pass_style: "apple_pass_style",
             archived_at: "archived_at",
             auxiliary_fields: ["auxiliary_fields"],
             card_color: "card_color",
             created_at: "created_at",
             customer_cards_count: 1,
             expires_at: "expires_at",
+            featured_actions: ["featured_actions"],
+            google_logo_style: "google_logo_style",
+            google_wallet: { hero_image: "hero_image", text_color: "text_color", warnings: ["warnings"] },
             header_text: "header_text",
             id: 1,
             initial_stamps: 1,
@@ -458,12 +470,16 @@ describe("CardsClient", () => {
         const client = new LealClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { card: {} };
         const rawResponseBody = {
+            apple_pass_style: "apple_pass_style",
             archived_at: "archived_at",
             auxiliary_fields: ["auxiliary_fields"],
             card_color: "card_color",
             created_at: "created_at",
             customer_cards_count: 1,
             expires_at: "expires_at",
+            featured_actions: ["featured_actions"],
+            google_logo_style: "google_logo_style",
+            google_wallet: { hero_image: "hero_image", text_color: "text_color", warnings: ["warnings"] },
             header_text: "header_text",
             id: 1,
             initial_stamps: 1,

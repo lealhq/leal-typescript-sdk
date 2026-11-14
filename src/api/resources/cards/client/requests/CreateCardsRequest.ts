@@ -17,12 +17,18 @@ export interface CreateCardsRequest {
 
 export namespace CreateCardsRequest {
     export interface Card {
+        /** Apple Wallet layout. 'poster' is iOS 27's full-bleed layout; older iPhones show the store card. Defaults to 'store_card' */
+        apple_pass_style?: Card.ApplePassStyle | undefined;
         /** Up to two extra front-of-pass fields. Blank values are ignored. */
         auxiliary_fields?: string[] | undefined;
         /** Hex colour for the card background (e.g. '#6B4226') */
         card_color?: string | undefined;
         /** Card expiry timestamp (ISO 8601) */
         expires_at?: string | undefined;
+        /** Up to two buttons, shown as Featured Actions under the iOS 27 poster and as links in Google Wallet. Send an empty array to remove them. */
+        featured_actions?: string[] | undefined;
+        /** How the logo sits on Google Wallet. Defaults to 'round' */
+        google_logo_style?: Card.GoogleLogoStyle | undefined;
         /** Optional header text displayed on the card */
         header_text?: string | undefined;
         /** Number of stamps pre-filled on new customer cards (must be >= 0 and < stamps_required) */
@@ -62,6 +68,18 @@ export namespace CreateCardsRequest {
     }
 
     export namespace Card {
+        /** Apple Wallet layout. 'poster' is iOS 27's full-bleed layout; older iPhones show the store card. Defaults to 'store_card' */
+        export const ApplePassStyle = {
+            StoreCard: "store_card",
+            Poster: "poster",
+        } as const;
+        export type ApplePassStyle = (typeof ApplePassStyle)[keyof typeof ApplePassStyle];
+        /** How the logo sits on Google Wallet. Defaults to 'round' */
+        export const GoogleLogoStyle = {
+            Round: "round",
+            Wide: "wide",
+        } as const;
+        export type GoogleLogoStyle = (typeof GoogleLogoStyle)[keyof typeof GoogleLogoStyle];
         /** What the wallet pass QR holds. Defaults to 'link' for new cards */
         export const QrStyle = {
             Link: "link",
